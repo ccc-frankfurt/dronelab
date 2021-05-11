@@ -3,8 +3,4 @@ Code and documentation to the project drone lab at the CS Institute at the Goeth
 
 The code to steer the drone is based on 'https://github.com/damiafuentes/DJITelloPy'
 
-To start a run, go to:
-
-'cd dronelab'
-
-'./runner.sh'
+The documentation can be found on the Wiki-Pages
