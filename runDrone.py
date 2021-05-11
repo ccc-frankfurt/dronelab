@@ -168,7 +168,7 @@ class AutonomousDrone(object):
         self.ops_mode = args.ops_mode
         self.log_level = args.log_level
         self.path_to_data =  '/home/pi/data/'
-        self.path_to_routecsv =  '/home/pi/tidronecontrol/routes/route_test2.csv' # make configurable
+        self.path_to_routecsv =  '/home/pi/dronelab/routes/route_test2.csv' # make configurable
         self.fname_meta_global = 'meta_global.csv' # filename for global metadata
         self.df_meta_global = []#pd.DataFrame(columns=['run_begin', 'serial_number', 'move_mode','route','battery_initial','temperature_initial','sec_in_air_max','FPS', 'flight_start_time' ])
         self.fname_meta_run ='meta_run.csv'# filename for temporal metadata for run
@@ -444,8 +444,8 @@ class AutonomousDrone(object):
                         
 
 
-        res = self.F.protect_gateway_interface()
-        self.logger.info("Protecting against wlan gatewy interface switch:", res)
+        #res = self.F.protect_gateway_interface()
+        #self.logger.info("Protecting against wlan gatewy interface switch:", res)
         if self.ops_mode:
             self.logger.info('Wating for 2 Minutes to prevent another run within the next minute... Tello Drone will switch itselt off within 15 minutes.')
             time.sleep(2*60)
@@ -494,8 +494,8 @@ def just_connect():
     try:
             tello.connect()
     except Exception as e:
-            self.logger.debug("Tello not connected, please check the following: Turn on Tello Drone, Connect to Tello Wifi. Error:",e)
-            
+            #self.logger.debug("Tello not connected, please check the following: Turn on Tello Drone, Connect to Tello Wifi. Error:",e)
+            0
             return
 
     battery_full = 100
@@ -510,16 +510,16 @@ def just_connect():
         temp =   tello.get_temperature()
         
         elapsed_time = time.time() - start_time
-        self.logger.debug("elapsed_time", elapsed_time)
-        self.logger.debug("flight_time", flight_time)
-        self.logger.debug("battery_status", battery_status)
-        self.logger.debug("height",height)
-        self.logger.debug("temp",temp)
+        #self.logger.debug("elapsed_time", elapsed_time)
+        #self.logger.debug("flight_time", flight_time)
+        #self.logger.debug("battery_status", battery_status)
+        #self.logger.debug("height",height)
+        #self.logger.debug("temp",temp)
         time.sleep(1)
 
 
 def loadarguments():
-    parser = argparse.ArgumentParser(description='Options for KINAO Product Builder')
+    parser = argparse.ArgumentParser(description='Options for Drone Runner')
 
     parser.add_argument('--dryrun', dest='dryrun', action='store_true',
                         default=False,
