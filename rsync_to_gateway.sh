@@ -1,5 +1,4 @@
 #!/bin/bash
-#set password parameter
 TARGET=/data/AISEL/dronelab
 SOURCE=/home/pi/data
 GATEWAYIP=141.2.10.184
