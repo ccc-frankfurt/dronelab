@@ -203,7 +203,7 @@ class AutonomousDrone(object):
 
         self.is_conf_success = True
          # COnfigure:   cheh serial nr, chech battery status
-        self.run_begin = datetime.datetime.now()
+        self.run_begin = datetime.now()
         self.run_begin_str = self.run_begin.strftime("%Y-%m-%d-%H-%M-%S")
     
         if not "DISPLAY" in os.environ:
