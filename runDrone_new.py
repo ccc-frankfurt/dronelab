@@ -407,7 +407,7 @@ class AutonomousDrone(object):
                 #states = self.tello.get_states()
                 self.df_meta_run.append({'elapsed_time':elapsed_time, 
                                                 'frame':i_frame,
-                                                'timestamp': str(datetime.now().strftime("%H:%M:%S")): 
+                                                'timestamp': str(datetime.now().strftime("%H:%M:%S")), 
                                                 'battery':self.tello.get_battery(),
                                                 'temperature':self.tello.get_highest_temperature(),
                                                 'flight_time':self.tello.get_highest_temperature(),
