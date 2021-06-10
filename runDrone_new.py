@@ -1,4 +1,4 @@
-from djitellopy import TelloNew
+from djitellopy import TelloNew, BackgroundFrameRead
 import cv2
 import pygame
 import numpy as np
