@@ -535,7 +535,7 @@ def loadarguments():
                         help='Save meta data (tbd: and register to database)')                    
     parser.add_argument('--ops_mode', dest='ops_mode', action='store_true',
                         default=False,
-                        help='Operating mode in Greenhouse for deployment')
+                        help='Operating mode in Lab for deployment')
     parser.add_argument('--display_stream', dest='display_stream', type=bool,
                         default=False,
                         help='Camerastream to be displayed on screen')
