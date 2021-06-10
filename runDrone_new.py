@@ -37,7 +37,7 @@ class FrontEnd(object):
         self.screen = pygame.display.set_mode([960, 720])
 
         # Init Tello object that interacts with the Tello drone
-        self.tello = Tello()
+        self.tello = TelloNew()
 
         # Drone velocities between -100~100
         self.for_back_velocity = 0
