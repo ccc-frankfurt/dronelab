@@ -8,7 +8,7 @@ from threading import Thread
 from .decorators import accepts
 
 
-class TelloNew:
+class Tello:
     """Python wrapper to interact with the Ryze Tello drone using the official Tello api.
     Tello API documentation:
     https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf
