@@ -81,7 +81,7 @@ class TelloNew:
 
         global threads_initialized, client_socket, drones
 
-        self.address = (host, Tello.CONTROL_UDP_PORT)
+        self.address = (host, TelloNew.CONTROL_UDP_PORT)
         self.stream_on = False
         self.retry_count = retry_count
         self.last_received_command_timestamp = time.time()
@@ -90,13 +90,13 @@ class TelloNew:
         if not threads_initialized:
             # Run Tello command responses UDP receiver on background
             client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            client_socket.bind(('', Tello.CONTROL_UDP_PORT))
-            response_receiver_thread = Thread(target=Tello.udp_response_receiver)
+            client_socket.bind(('', TelloNew.CONTROL_UDP_PORT))
+            response_receiver_thread = Thread(target=TelloNew.udp_response_receiver)
             response_receiver_thread.daemon = True
             response_receiver_thread.start()
 
             # Run state UDP receiver on background
-            state_receiver_thread = Thread(target=Tello.udp_state_receiver)
+            state_receiver_thread = Thread(target=TelloNew.udp_state_receiver)
             state_receiver_thread.daemon = True
             state_receiver_thread.start()
 
@@ -104,7 +104,7 @@ class TelloNew:
 
         drones[host] = {'responses': [], 'state': {}}
 
-        self.LOGGER.info("Tello instance was initialized. Host: '{}'. Port: '{}'.".format(host, Tello.CONTROL_UDP_PORT))
+        self.LOGGER.info("Tello instance was initialized. Host: '{}'. Port: '{}'.".format(host, TelloNew.CONTROL_UDP_PORT))
 
     def get_own_udp_object(self):
         """Get own object from the global drones dict. This object is filled
@@ -127,7 +127,7 @@ class TelloNew:
                 data, address = client_socket.recvfrom(1024)
 
                 address = address[0]
-                Tello.LOGGER.debug('Data received from {} at client_socket'.format(address))
+                TelloNew.LOGGER.debug('Data received from {} at client_socket'.format(address))
 
                 if address not in drones:
                     continue
@@ -135,7 +135,7 @@ class TelloNew:
                 drones[address]['responses'].append(data)
 
             except Exception as e:
-                Tello.LOGGER.error(e)
+                TelloNew.LOGGER.error(e)
                 break
 
     @staticmethod
@@ -146,23 +146,23 @@ class TelloNew:
         Internal method, you normally wouldn't call this yourself.
         """
         state_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        state_socket.bind(("", Tello.STATE_UDP_PORT))
+        state_socket.bind(("", TelloNew.STATE_UDP_PORT))
 
         while True:
             try:
                 data, address = state_socket.recvfrom(1024)
 
                 address = address[0]
-                Tello.LOGGER.debug('Data received from {} at state_socket'.format(address))
+                TelloNew.LOGGER.debug('Data received from {} at state_socket'.format(address))
 
                 if address not in drones:
                     continue
 
                 data = data.decode('ASCII')
-                drones[address]['state'] = Tello.parse_state(data)
+                drones[address]['state'] = TelloNew.parse_state(data)
 
             except Exception as e:
-                Tello.LOGGER.error(e)
+                TelloNew.LOGGER.error(e)
                 break
 
     @staticmethod
@@ -171,7 +171,7 @@ class TelloNew:
         Internal method, you normally wouldn't call this yourself.
         """
         state = state.strip()
-        Tello.LOGGER.debug('Raw state data: {}'.format(state))
+        TelloNew.LOGGER.debug('Raw state data: {}'.format(state))
 
         if state == 'ok':
             return {}
@@ -185,14 +185,14 @@ class TelloNew:
             key = split[0]
             value: Union[int, float, str] = split[1]
 
-            if key in Tello.state_field_converters:
-                num_type = Tello.state_field_converters[key]
+            if key in TelloNew.state_field_converters:
+                num_type = TelloNew.state_field_converters[key]
                 try:
                     value = num_type(value)
                 except ValueError as e:
-                    Tello.LOGGER.debug('Error parsing state value for {}: {} to {}'
+                    TelloNew.LOGGER.debug('Error parsing state value for {}: {} to {}'
                                        .format(key, value, num_type))
-                    Tello.LOGGER.error(e)
+                    TelloNew.LOGGER.error(e)
                     continue
 
             state_dict[key] = value
@@ -523,7 +523,7 @@ class TelloNew:
             for i in range(REPS):
                 if self.get_current_state():
                     t = i / REPS  # in seconds
-                    Tello.LOGGER.debug("'.connect()' received first state packet after {} seconds".format(t))
+                    TelloNew.LOGGER.debug("'.connect()' received first state packet after {} seconds".format(t))
                     break
                 time.sleep(1 / REPS)
 
@@ -852,7 +852,7 @@ class TelloNew:
             {'pitch': int, 'roll': int, 'yaw': int}
         """
         response = self.send_read_command('attitude?')
-        return Tello.parse_state(response)
+        return TelloNew.parse_state(response)
 
     def query_barometer(self) -> int:
         """Get barometer value (cm)
@@ -932,8 +932,8 @@ class BackgroundFrameRead:
         # According to issue #90 the decoder might need some time
         # https://github.com/damiafuentes/DJITelloPy/issues/90#issuecomment-855458905
         start = time.time()
-        while time.time() - start < Tello.FRAME_GRAB_TIMEOUT:
-            Tello.LOGGER.debug('trying to grab a frame...')
+        while time.time() - start < TelloNew.FRAME_GRAB_TIMEOUT:
+            TelloNew.LOGGER.debug('trying to grab a frame...')
             self.grabbed, self.frame = self.cap.read()
             if self.frame is not None:
                 break
