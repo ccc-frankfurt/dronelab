@@ -231,7 +231,7 @@ class AutonomousDrone(object):
             return
 
          # Init Tello object that interacts with the Tello drone
-        self.tello = Tello()
+        self.tello = TelloNew()
 
         try:
             self.tello.connect()
