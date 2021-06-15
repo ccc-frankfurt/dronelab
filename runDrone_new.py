@@ -1,4 +1,4 @@
-from djitellopy import Tello
+from djitellopy import TelloNew, BackgroundFrameRead
 import cv2
 import pygame
 import numpy as np
@@ -10,6 +10,7 @@ import os,sys
 import logging
 from shutil import copyfile
 from connectwifi import WifiFinder
+from datetime import datetime
 # Speed of the drone
 S = 60
 # Frames per second of the pygame window display
@@ -36,7 +37,7 @@ class FrontEnd(object):
         self.screen = pygame.display.set_mode([960, 720])
 
         # Init Tello object that interacts with the Tello drone
-        self.tello = Tello()
+        self.tello = TelloNew()
 
         # Drone velocities between -100~100
         self.for_back_velocity = 0
@@ -202,7 +203,7 @@ class AutonomousDrone(object):
 
         self.is_conf_success = True
          # COnfigure:   cheh serial nr, chech battery status
-        self.run_begin = datetime.datetime.now()
+        self.run_begin = datetime.now()
         self.run_begin_str = self.run_begin.strftime("%Y-%m-%d-%H-%M-%S")
     
         if not "DISPLAY" in os.environ:
@@ -230,7 +231,7 @@ class AutonomousDrone(object):
             return
 
          # Init Tello object that interacts with the Tello drone
-        self.tello = Tello()
+        self.tello = TelloNew()
 
         try:
             self.tello.connect()
@@ -405,14 +406,17 @@ class AutonomousDrone(object):
             if self.save_meta:
                 #states = self.tello.get_states()
                 self.df_meta_run.append({'elapsed_time':elapsed_time, 
-                                                'frame':i_frame, 
-                                                'battery':self.tello.battery,
-                                                'temperature':self.tello.temperature_highest,
-                                                'flight_time':self.tello.flight_time,
-                                                'height':self.tello.height,
-                                                'attitude':self.tello.attitude,
-                                                'get_distance_tof':self.tello.distance_tof,
-                                                'get_barometer':self.tello.barometer})
+                                                'frame':i_frame,
+                                                'timestamp': str(datetime.now().strftime("%H:%M:%S")), 
+                                                'battery':self.tello.get_battery(),
+                                                'temperature':self.tello.get_highest_temperature(),
+                                                'flight_time':self.tello.get_highest_temperature(),
+                                                'height':self.tello.get_height(),
+                                                'pitch':self.tello.get_pitch(),
+                                                'roll':self.tello.get_roll(),
+                                                'yaw':self.tello.get_yaw(),
+                                                'get_distance_tof':self.tello.get_distance_tof(),
+                                                'get_barometer':self.tello.get_barometer})
                                                 
                
             
@@ -490,7 +494,7 @@ class AutonomousDrone(object):
         return do_update
 
 def just_connect():
-    tello = Tello()
+    tello = TelloNew()
     try:
             tello.connect()
     except Exception as e:
