@@ -1,5 +1,7 @@
 # dronelab - rail safety
 Code and documentation to the project "dronelab - rail safety" at the CS Institute at the Goethe University, as part of the AI Systems Engineering Project (AISEL).
+#### Supported by the BMBF funded Artifical Intelligence Systems Engineering Laboratory (AISEL) project  <img src="pics/BMBF_gefoerdert_2017_en.jpg" width="120">
+
 
 The learning objectives are summarised here:
 
