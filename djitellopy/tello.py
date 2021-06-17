@@ -136,6 +136,12 @@ class Tello:
                     self.acceleration_y = float(list[29])
                     self.acceleration_z = float(list[31])
                     self.attitude = {'pitch': int(list[1]), 'roll': int(list[3]), 'yaw': int(list[5])}
+                    
+                    print("###")
+                    print(self.response_state)
+                    for l in list:
+                        print(l)
+
             except Exception as e:
                 self.LOGGER.error(e)
                 self.LOGGER.error("Response was is {}".format(self.response_state))
