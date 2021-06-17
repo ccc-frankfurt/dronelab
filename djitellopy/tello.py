@@ -140,11 +140,13 @@ class Tello:
                     self.acceleration_z = float(list[20].split(":")[1])
                     self.attitude = {'pitch': self.pitch, 'roll': self.roll, 'yaw': self.yaw}
 
+                    """
                     print("###")
                     print(self.response_state)
                     for l in list:
                         print(l)
-
+                    """
+                    
             except Exception as e:
                 self.LOGGER.error(e)
                 self.LOGGER.error("Response was is {}".format(self.response_state))
