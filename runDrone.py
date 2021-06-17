@@ -10,6 +10,8 @@ import os,sys
 import logging
 from shutil import copyfile
 from connectwifi import WifiFinder
+from datetime import datetime
+
 # Speed of the drone
 S = 60
 # Frames per second of the pygame window display
@@ -414,8 +416,9 @@ class AutonomousDrone(object):
                                                 'roll':self.roll,
                                                 'yaw':self.yaw,
                                                 'get_distance_tof':self.tello.distance_tof,
-                                                'get_barometer':self.tello.barometer})
-                                                
+                                                'get_barometer':self.tello.barometer,
+                                                'time':datetime.now().time()
+                                                })
                
             
            
