@@ -173,7 +173,7 @@ class AutonomousDrone(object):
         self.df_meta_global = []#pd.DataFrame(columns=['run_begin', 'serial_number', 'move_mode','route','battery_initial','temperature_initial','sec_in_air_max','FPS', 'flight_start_time' ])
         self.fname_meta_run ='meta_run.csv'# filename for temporal metadata for run
         self.df_meta_run = [] #pd.DataFrame(columns=['elapsed_time', 'frame', 'battery','temperature','flight_time','height','attitude','get_distance_tof','get_barometer'])
-      
+        self.speed = 10
         self.frames_to_save = {}
     
         self.path_to_log = '/var/log/dronelab'
