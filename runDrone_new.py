@@ -169,7 +169,7 @@ class AutonomousDrone(object):
         self.ops_mode = args.ops_mode
         self.log_level = args.log_level
         self.path_to_data =  '/home/pi/data/'
-        self.path_to_routecsv =  '/home/pi/dronelab/routes/route_test2.csv' # make configurable
+        self.path_to_routecsv =  '/home/pi/dronelab/routes/route_test.csv' # make configurable
         self.fname_meta_global = 'meta_global.csv' # filename for global metadata
         self.df_meta_global = []#pd.DataFrame(columns=['run_begin', 'serial_number', 'move_mode','route','battery_initial','temperature_initial','sec_in_air_max','FPS', 'flight_start_time' ])
         self.fname_meta_run ='meta_run.csv'# filename for temporal metadata for run
