@@ -118,7 +118,10 @@ class Tello:
                 self.response_state, _ = self.stateSocket.recvfrom(256)
                 if self.response_state != 'ok':
                     self.response_state = self.response_state.decode('ASCII')
-                    list = self.response_state.replace(';', ':').split(':')
+                    #list = self.response_state.replace(';', ':').split(':')
+                    list= self.response_state.split(";")
+                    with open ("/home/pi/dronelab/djitellopy/string.txt", "w") as file:
+                        file.write(str(list))
                     self.pitch = int(list[1])
                     self.roll = int(list[3])
                     self.yaw = int(list[5])
@@ -136,7 +139,7 @@ class Tello:
                     self.acceleration_y = float(list[29])
                     self.acceleration_z = float(list[31])
                     self.attitude = {'pitch': int(list[1]), 'roll': int(list[3]), 'yaw': int(list[5])}
-                    
+
                     print("###")
                     print(self.response_state)
                     for l in list:
