@@ -1,1 +1,1 @@
-['mid:-1', 'x:-100', 'y:-100', 'z:-100', 'mpry:0,0,0', 'pitch:0', 'roll:0', 'yaw:-3', 'vgx:0', 'vgy:0', 'vgz:0', 'templ:83', 'temph:84', 'tof:10', 'h:0', 'bat:20', 'baro:109.25', 'time:27', 'agx:9.00', 'agy:-6.00', 'agz:-1002.00', '\r\n']
+['mid:-1', 'x:-100', 'y:-100', 'z:-100', 'mpry:0,0,0', 'pitch:0', 'roll:0', 'yaw:0', 'vgx:0', 'vgy:0', 'vgz:0', 'templ:87', 'temph:87', 'tof:10', 'h:0', 'bat:8', 'baro:111.27', 'time:0', 'agx:12.00', 'agy:0.00', 'agz:-1004.00', '\r\n']
