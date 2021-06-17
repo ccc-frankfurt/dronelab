@@ -403,7 +403,7 @@ class AutonomousDrone(object):
            
 
             if self.save_meta:
-                #self.tello.get_states()
+                self.tello.get_states()
                 self.df_meta_run.append({'elapsed_time':elapsed_time, 
                                                 'frame':i_frame, 
                                                 'battery':self.tello.battery,
