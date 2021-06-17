@@ -120,7 +120,7 @@ class Tello:
                     self.response_state = self.response_state.decode('ASCII')
                     #list = self.response_state.replace(';', ':').split(':')
                     list= self.response_state.split(";")
-                    with open ("string.txt", "w") as file:
+                    with open ("/home/pi/dronelab/djitellopy/string.txt", "w") as file:
                         file.write(str(list))
                     self.pitch = int(list[1])
                     self.roll = int(list[3])

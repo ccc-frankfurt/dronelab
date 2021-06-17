@@ -40,6 +40,14 @@ class TelloNew:
     CONTROL_UDP_PORT = 8889
     STATE_UDP_PORT = 8890
 
+    # VideoCapture object
+    cap = None
+    background_frame_read = None
+
+    stream_on = False
+
+    is_flying = False
+
     # Set up logger
     HANDLER = logging.StreamHandler()
     FORMATTER = logging.Formatter('[%(levelname)s] %(filename)s - %(lineno)d - %(message)s')
