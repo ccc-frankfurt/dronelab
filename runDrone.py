@@ -410,7 +410,9 @@ class AutonomousDrone(object):
                                                 'temperature':self.tello.temperature_highest,
                                                 'flight_time':self.tello.flight_time,
                                                 'height':self.tello.height,
-                                                'attitude':self.tello.attitude,
+                                                'pitch':self.pitch,
+                                                'roll':self.roll,
+                                                'yaw':self.yaw,
                                                 'get_distance_tof':self.tello.distance_tof,
                                                 'get_barometer':self.tello.barometer})
                                                 

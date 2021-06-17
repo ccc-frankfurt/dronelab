@@ -64,7 +64,10 @@ class Tello:
     acceleration_x = -1.0
     acceleration_y = -1.0
     acceleration_z = -1.0
-    attitude = {'pitch': -1, 'roll': -1, 'yaw': -1}
+    pitch = -1.0
+    roll=-1.0
+    yaw=-1.0
+    
 
     def __init__(self,
                  host='192.168.10.1',
@@ -138,6 +141,7 @@ class Tello:
                     self.acceleration_x = float(list[18].split(":")[1])
                     self.acceleration_y = float(list[19].split(":")[1])
                     self.acceleration_z = float(list[20].split(":")[1])
+                    
                     self.attitude = {'pitch': self.pitch, 'roll': self.roll, 'yaw': self.yaw}
 
                     """
@@ -146,7 +150,7 @@ class Tello:
                     for l in list:
                         print(l)
                     """
-                    
+
             except Exception as e:
                 self.LOGGER.error(e)
                 self.LOGGER.error("Response was is {}".format(self.response_state))
