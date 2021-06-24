@@ -320,6 +320,10 @@ class AutonomousDrone(object):
         if not self.tello.streamon():
             self.logger.error("Could not start video stream")
             return
+        
+        if not self.tello.enable_mission_pads():
+            self.logger.error("Could not enable mission pads")
+            return
 
         frame_read = self.tello.get_frame_read()
 
@@ -411,7 +415,7 @@ class AutonomousDrone(object):
                 should_stop = True
 
         try:
-            self.tello.go_xyz_speed_mid(0,0,0,10,1)
+            self.tello.go_xyz_speed_yaw_mid(120,0,40,30,90,1,2)
             self.tello.land()
         except:
             self.logger.info("landing failed..trying to save stream")
