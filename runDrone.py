@@ -383,7 +383,7 @@ class AutonomousDrone(object):
                 pygame.display.update()
 
             if self.save_stream:
-                filename = "fps_" + str(self.FPS) + "_frame_" + str(i_frame) + ".jpg"
+                filename = f"fps_{self.FPS}_frame_{i_frame:03}.jpg"
 
                 if np.sum(frame_cv_save) != 0:
                     self.frames_to_save[filename] = frame_cv_save
