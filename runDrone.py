@@ -417,8 +417,10 @@ class AutonomousDrone(object):
                 should_stop = True
 
         try:
-            self.tello.go_xyz_speed_yaw_mid(120,0,40,30,90,1,2)
-            self.tello.move()
+            self.tello.go_xyz_speed_yaw_mid(200,0,100,30,-90,1,2)
+            self.tello.go_xyz_speed_yaw_mid(0,-80,100,30,-180,2,3)
+            self.tello.go_xyz_speed_yaw_mid(-200,0,100,30,90,3,4)
+            self.tello.go_xyz_speed_yaw_mid(0,80,100,30, 0,4,1)
             self.tello.land()
         except:
             self.logger.info("landing failed..trying to save stream")
