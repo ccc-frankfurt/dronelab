@@ -1,3 +1,4 @@
+from PadDrone import PadDrone
 from djitellopy import Tello
 import cv2
 import pygame
@@ -12,6 +13,7 @@ import logging
 from shutil import copyfile
 from connectwifi import WifiFinder
 
+import thread
 # Speed of the drone
 S = 60
 # Frames per second of the pygame window display
@@ -363,11 +365,11 @@ class AutonomousDrone(object):
         while not should_stop:
 
             elapsed_time = time.time() - start_time
-            if self.move_mode == 'fixroute':
-                do_update_rc = self.set_state_fixroute(elapsed_time)
-                self.logger.debug("fixroute do_update_rc" + str(do_update_rc) + " elapsed time" + str(elapsed_time))
-                if do_update_rc:
-                    self.update()
+            #if self.move_mode == 'fixroute':
+            #    do_update_rc = self.set_state_fixroute(elapsed_time)
+            #    self.logger.debug("fixroute do_update_rc" + str(do_update_rc) + " elapsed time" + str(elapsed_time))
+            #    if do_update_rc:
+            #        self.update()
 
             i_frame += 1
             if frame_read.stopped:
@@ -416,6 +418,7 @@ class AutonomousDrone(object):
 
         try:
             self.tello.go_xyz_speed_yaw_mid(120,0,40,30,90,1,2)
+            self.tello.move()
             self.tello.land()
         except:
             self.logger.info("landing failed..trying to save stream")
@@ -512,7 +515,7 @@ def loadarguments():
                         default=False,
                         help='Do a dryrun.. configure everything but then only show what would have been executed')
     parser.add_argument('--move_mode', dest='move_mode',
-                        choices=["noflight", "byhuman", "startland", "fixroute", "adaptive"],
+                        choices=["noflight", "byhuman", "startland", "fixroute", "adaptive", "fixroutepads"],
                         default=False,
                         help='Select mode, one of the following:""noflight": just switch on drone, "byhuman": steer drone via laptop and keys, "startland": Only Start and Land, "fixroute": a fixed route, "adaptive": adaptive route to task goal ')
     parser.add_argument('--save_stream', dest='save_stream', action='store_true',
@@ -545,6 +548,14 @@ def main(args):
     if args.move_mode == "byhuman":
         frontend = FrontEnd()
         frontend.run()
+    elif args.move_mode == "fixroutepads":
+        print('starting in mode fixroutepads')
+        paddrone = PadDrone(args)
+        paddrone.configure()
+        if paddrone.is_conf_success:
+            paddrone.run()
+        else:
+            paddrone.logger.info("Skipping run, since is_conf_success = False")
     elif args.move_mode in ["startland", "fixroute"]:
         print('starting in mode ', args.move_mode, args.dryrun)
         autodrone = AutonomousDrone(args)
