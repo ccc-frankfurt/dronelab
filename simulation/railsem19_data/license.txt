@@ -1,0 +1,28 @@
+License Agreement for the RailSem19 dataset.
+This dataset consists of multiple releases of material. The material includes among other things:
+*) Extracted frames from videos (color or black-and-white intensity images; hereinafter referred to as "intensity images")
+*) Dense meta-data describing semantics of individual frames using one integer value per pixel (hereinafter referred to as "dense meta-data")
+*) Sparse meta-data describing semantics and individual instances of individual frames using formats other than described as "dense meta-data" (hereinafter referred to as "sparse meta-data")
+*) Generated image representations of sparse meta-data (hereinafter referred to as "meta-images")
+
+The images and the sparse meta-data of this dataset are registered at the Austrian Agency for Data Protection under DVR-Nr.: 0594636/038.
+All intensity images are released under the CC-BY-NC 4.0 license: https://creativecommons.org/licenses/by-nc/4.0/. This has no implications on the original image rights held by the respective original author. All authors are referenced in a separate authors.txt file packaged with each data release. Some material may be available under different licenses. This does not change the extent and usability under this release. 
+Intensity images may only be used in the context of scientific  improving and testing computer vision solutions for rail and road safety (and scientific publications, presentations, and conversations about these topics). Intensity images may not be used for tasks that result in the identification of real-world identities (people and cars) or its general usage as digital assets (e.g. for advertisements, art projects). 
+Due to the nature of the scenarios, additional data protection issues have to be respected. Information contained in the intensity images which may lead to the identification of people or cars must be removed from material without delay if it is no longer necessary for scientific work. Any personal data must be removed before any information is published.  
+Any release of material to the public is done by your own account. AIT excludes any liability for publications in regard to data privacy violations, license issues or authorship claim. 
+
+Except intensity images and dense meta-data, all other contents of the WildDash dataset and its benchmark are supplied and maintained by AIT Austrian Institute of Technology GmbH (hereinafter referred to as AIT) together with all information contained therein, including text, graphics, images, design and source code or other forms, are and remain the property of AIT and are protected by copyrights, trademarks, patents, licenses or other proprietary rights or laws. 
+
+Access to this dataset is restricted to the members who registered on the accompanying website (wilddash.cc or vitro-testing.com/railsem19). You are not allowed to share this data directly with other people or entities. You may share your results from your algorithm freely as long as the original sparse meta-data or meta-images cannot be derived from it. You may use intensity images (or visualizations that partially show them) in publications, presentations and correspondence but you have to take care of data protection issues yourself (see above). For the avoidance of doubt should your use of the material provided through RailSem19 need any further data protection actions according to the legislation of your country or the country where you use the material, these actions are to be taken by you and you will hold AIT fully harmless from any claims of third parties in this regard. 
+AIT may decide anytime to discontinue RailSem19 and will post such information on the RailSem19 website. 
+
+The dense meta-data contains data generated using the pre-trained InplaceABN model (see https://github.com/mapillary/inplace_abn) from Mapillary Research released under CC BY-NC-SA 4.0 license. The dense meta-data is thus also released under CC BY-NC-SA 4.0 license (see https://creativecommons.org/licenses/by-nc-sa/4.0/).
+No part of the sparse meta-data may be redistributed without the prior written consent of AIT. You are entitled to reference the dataset in your publication, but are obliged to make a clear distinction between information provided by you and information provided by AIT.
+
+The contents of this dataset and benchmark were created with due diligence. Nevertheless AIT excludes any liability in regards to the accuracy, sufficiency and currentness of the data visible on this website.
+
+Some files may contain links to internet pages of third parties, which are not under AIT‘s control. AIT therefore accepts no liability whatsoever for the content of those pages, especially their lawfulness and legality. Please let us know if these links are deactivated or appear to be incorrect or inappropriate or if any other problems arise from the pages maintained by AIT.
+
+Data protection and property rights issues can be filed via email to: dashcamdataset@gmail.com. Be sure to use the term "WildDash data issues" in your email subject line. Please allow 10 business days for our response.
+
+Copyright 2019 AIT Austrian Institute of Technology GmbH. All rights reserved.
