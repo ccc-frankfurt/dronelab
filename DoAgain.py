@@ -1,8 +1,5 @@
 """
-This module only provides one function: wait_interrupt
-Created by Patrick Bonack. You are free to use it for EPR.
-
-Needs the module pynput. You can install it with pip: pip install pynput
+Do again until stopped
 """
 
 import threading
