@@ -39,7 +39,7 @@ class PadDrone(object):
         self.path_to_log = '/var/log/dronelab'
         self.props_fly = args.props_fly
         self.prop_to_save = {}
-        self.FPS = 10
+        self.FPS = 1# TODO set to 1 while testing
 
         # internal
         self.send_rc_control = False
@@ -257,11 +257,11 @@ class PadDrone(object):
             #getattr(self.tello, 'go_xyz_speed_mid')(200, 0, 30, speed, 1)
             self.tello.go_xyz_speed_mid(0, 0, 100, speed, 1)
             self.tello.go_xyz_speed_mid(0, 0, 20, speed, 1)
-            self.tello.go_xyz_speed_mid(300, 0, 20, speed, 1)
-            self.tello.go_xyz_speed_yaw_mid(300, 0, 100, speed, 180, 1, 2)
+            self.tello.go_xyz_speed_mid(280, 0, 20, speed, 1)
+            self.tello.go_xyz_speed_yaw_mid(280, 0, 100, speed, 180, 1, 2)
             self.tello.go_xyz_speed_mid(0, 0, 20, speed, 2)
-            self.tello.go_xyz_speed_mid(-300, 0, 20, speed, 2)
-            self.tello.go_xyz_speed_yaw_mid(-300, 0, 100, speed, 180, 2, 1)
+            self.tello.go_xyz_speed_mid(-280, 0, 20, speed, 2)
+            self.tello.go_xyz_speed_yaw_mid(-280, 0, 100, speed, 180, 2, 1)
         except:
             self.logger.info("Run failed somehow")
         #finished
