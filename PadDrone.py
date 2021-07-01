@@ -194,12 +194,12 @@ class PadDrone(object):
                                         'battery_initial': self.battery_initial,
                                         'temperature_initial': self.temperature_initial,
                                         'sec_in_air_max': self.sec_in_air_max,
-                                        'FPS': self.FPS, # this is actually frames every fps seconds
+                                        'FPS': self.FPS,
                                         'flight_start_time': start_time})
 
-        i_frame = 0
 
-        def log_information():
+
+        def log_information(counter):
             elapsed_time = time.time() - start_time
             print(f"Elapsed time: {elapsed_time}") #TODO remove
             if frame_read.stopped:
@@ -220,7 +220,7 @@ class PadDrone(object):
                 pygame.display.update()
 
             if self.save_stream:
-                filename = f"fps_{self.FPS}_frame_{i_frame:03}.jpg"
+                filename = f"fps_{self.FPS}_frame_{counter:03}.jpg"
 
                 if np.sum(frame_cv_save) != 0:
                     self.frames_to_save[filename] = frame_cv_save
@@ -238,7 +238,6 @@ class PadDrone(object):
                                          'yaw': self.tello.yaw,
                                          'get_distance_tof': self.tello.distance_tof,
                                          'get_barometer': self.tello.barometer})
-
             self.logger.info("elapsed_time since first frame " + str(elapsed_time) + " " + str(i_frame))
 
         # logging in subthread
