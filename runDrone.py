@@ -13,7 +13,6 @@ import logging
 from shutil import copyfile
 from connectwifi import WifiFinder
 
-import thread
 # Speed of the drone
 S = 60
 # Frames per second of the pygame window display
