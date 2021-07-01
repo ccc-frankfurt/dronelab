@@ -241,7 +241,7 @@ class PadDrone(object):
             self.logger.info("elapsed_time since first frame " + str(elapsed_time) + " " + str(i_frame))
 
         # logging in subthread
-        t = DoAgain(self.FPS, log_information())
+        t = DoAgain(snapshots_interval=1/self.FPS, func=log_information)
         t.start()
 
 

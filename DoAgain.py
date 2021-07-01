@@ -9,7 +9,7 @@ import time
 
 class DoAgain(Thread):
 
-    def __init__(self, snapshots_interval=10, func=lambda: print("Hello!")):
+    def __init__(self, snapshots_interval=1, func=lambda: print("Hello!")):
         super().__init__()
         self._finished = threading.Event()
         self.snapshots_interval = snapshots_interval
