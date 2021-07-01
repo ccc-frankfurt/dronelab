@@ -256,11 +256,11 @@ class PadDrone(object):
             speed = 30
             #getattr(self.tello, 'go_xyz_speed_mid')(200, 0, 30, speed, 1)
             self.tello.go_xyz_speed_mid(0, 0, 10, speed, 1)
-            self.tello.go_xyz_speed_mid(200, 0, 10, speed, 1)
-            self.tello.go_xyz_speed_yaw_mid(200, 0, 100, speed, 180, 1, 2)
+            self.tello.go_xyz_speed_mid(300, 0, 10, speed, 1)
+            self.tello.go_xyz_speed_yaw_mid(300, 0, 100, speed, 180, 1, 2)
             self.tello.go_xyz_speed_mid(0, 0, 10, speed, 2)
-            self.tello.go_xyz_speed_mid(-200, 0, 10, speed, 2)
-            self.tello.go_xyz_speed_yaw_mid(-200, 0, 100, speed, 180, 2, 1)
+            self.tello.go_xyz_speed_mid(-300, 0, 10, speed, 2)
+            self.tello.go_xyz_speed_yaw_mid(-300, 0, 100, speed, 180, 2, 1)
         except:
             self.logger.info("Run failed somehow")
         #finished
