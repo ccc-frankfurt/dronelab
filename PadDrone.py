@@ -253,9 +253,9 @@ class PadDrone(object):
             #self.tello.go_xyz_speed_yaw_mid(-200, 0, 100, 30, 90, 3, 4)
             #self.tello.go_xyz_speed_yaw_mid(0, 80, 100, 30, 0, 4, 1)
 
-            speed = 30
+            speed = 10
             #getattr(self.tello, 'go_xyz_speed_mid')(200, 0, 30, speed, 1)
-            self.tello.go_xyz_speed_mid(0, 0, 100, speed, 1)
+            self.tello.go_xyz_speed_mid(0, 0, 120, speed, 1)
             self.tello.go_xyz_speed_mid(0, 0, 20, speed, 1)
             self.tello.go_xyz_speed_mid(280, 0, 20, speed, 1)
             self.tello.go_xyz_speed_yaw_mid(280, 0, 100, speed, 180, 1, 2)
