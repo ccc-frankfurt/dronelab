@@ -1,7 +1,7 @@
 """
 Do again until stopped
 """
-
+import traceback
 import threading
 from threading import Thread
 import time
@@ -25,8 +25,10 @@ class DoAgain(Thread):
                 last_call = time.time()
                 try:
                     self.func()
-                except:
+                except Exception:
                     print("Do Again Func failed")
+                    print(traceback.format_exc())
+
 
 
 def main():
