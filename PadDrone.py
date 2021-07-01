@@ -267,6 +267,7 @@ class PadDrone(object):
             search_height = 30
             pad_height = 100
             #self.tello.go_xyz_speed_yaw_mid(0, 0, pad_height, speed, 0, 1, 1)
+            self.tello.go_xyz_speed_mid(0, 0, pad_height, speed, 1)
             self.tello.go_xyz_speed_mid(0, 0, search_height, speed, 1)
             self.tello.go_xyz_speed_mid(280, 0, search_height, speed, 1)
             self.tello.go_xyz_speed_yaw_mid(280, 0, pad_height, speed, 180, 1, 2)
