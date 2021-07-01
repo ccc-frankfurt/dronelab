@@ -264,15 +264,15 @@ class PadDrone(object):
             #self.tello.go_xyz_speed_yaw_mid(0, 80, 100, 30, 0, 4, 1)
 
             speed = 30
-            search_height = 30
+            search_height = 20
             pad_height = 100
             #self.tello.go_xyz_speed_yaw_mid(0, 0, pad_height, speed, 0, 1, 1)
             self.tello.go_xyz_speed_mid(0, 0, pad_height, speed, 1)
             self.tello.go_xyz_speed_mid(0, 0, search_height, speed, 1)
-            self.tello.go_xyz_speed_mid(280, 0, search_height, speed, 1)
-            self.tello.go_xyz_speed_yaw_mid(280, 0, pad_height, speed, 180, 1, 2)
+            self.tello.go_xyz_speed_mid(270, 0, search_height, speed, 1)
+            self.tello.go_xyz_speed_yaw_mid(270, 0, pad_height, speed, 180, 1, 2)
             self.tello.go_xyz_speed_mid(0, 0, search_height, speed, 2)
-            self.tello.go_xyz_speed_mid(-280, 0, search_height, speed, 2)
+            self.tello.go_xyz_speed_mid(-270, 0, search_height, speed, 2)
             self.tello.go_xyz_speed_yaw_mid(-280, 0, pad_height, speed, 0, 2, 1)
         except:
             self.logger.info("Run failed somehow")
