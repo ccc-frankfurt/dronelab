@@ -169,7 +169,6 @@ class PadDrone(object):
             return
 
         frame_read = self.tello.get_frame_read()
-        self.tello.move()
 
         should_stop = False
         self.logger.info("Will fly in mode " + self.move_mode + "for seconds: " + str(self.sec_in_air_max))
