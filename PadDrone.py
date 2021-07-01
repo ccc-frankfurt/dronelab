@@ -201,8 +201,9 @@ class PadDrone(object):
 
         def log_information():
             elapsed_time = time.time() - start_time
-
+            print(f"Elapsed time: {elapsed_time}") #TODO remove
             if frame_read.stopped:
+                print("frame_read.stopped")  # TODO remove
                 frame_read.stop()
                 return
 
@@ -241,7 +242,7 @@ class PadDrone(object):
             self.logger.info("elapsed_time since first frame " + str(elapsed_time) + " " + str(i_frame))
 
         # logging in subthread
-        t = DoAgain(snapshots_interval=1/self.FPS, func=log_information)
+        t = DoAgain(snapshots_interval=1.0/self.FPS, func=log_information)
         t.start()
 
 
