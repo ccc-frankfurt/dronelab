@@ -201,9 +201,8 @@ class PadDrone(object):
 
         def log_information(counter):
             elapsed_time = time.time() - start_time
-            print(f"Elapsed time: {elapsed_time}") #TODO remove
+            self.logger.info(f"Elapsed time: {elapsed_time}") #TODO remove
             if frame_read.stopped:
-                print("frame_read.stopped")  # TODO remove
                 frame_read.stop()
                 return
 
@@ -255,10 +254,13 @@ class PadDrone(object):
             #self.tello.go_xyz_speed_yaw_mid(0, 80, 100, 30, 0, 4, 1)
 
             speed = 30
-            self.tello.go_xyz_speed_mid(0, 0, 30, speed, 1)
-            self.tello.go_xyz_speed_mid(200, 0, 30, speed, 1)
-            #self.tello.go_xyz_speed_mid(200, 0, 100, speed, 1)
-            self.tello.go_xyz_speed_yaw_mid(200, 0, 100, speed, 180, 1, 2)  ## sample run
+            #getattr(self.tello, 'go_xyz_speed_mid')(200, 0, 30, speed, 1)
+            self.tello.go_xyz_speed_mid(0, 0, 10, speed, 1)
+            self.tello.go_xyz_speed_mid(200, 0, 10, speed, 1)
+            self.tello.go_xyz_speed_yaw_mid(200, 0, 100, speed, 180, 1, 2)
+            self.tello.go_xyz_speed_mid(0, 0, 10, speed, 2)
+            self.tello.go_xyz_speed_mid(-200, 0, 10, speed, 2)
+            self.tello.go_xyz_speed_yaw_mid(-200, 0, 100, speed, 180, 2, 1)
         except:
             self.logger.info("Run failed somehow")
         #finished
