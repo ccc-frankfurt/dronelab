@@ -1,4 +1,5 @@
 from DoAgain import DoAgain
+from PadRoute import PadRoute
 from djitellopy import Tello
 import cv2
 import pygame
@@ -35,7 +36,7 @@ class PadDrone(object):
         self.df_meta_run = []  # pd.DataFrame(columns=['elapsed_time', 'frame', 'battery','temperature','flight_time','height','attitude','get_distance_tof','get_barometer'])
         self.speed = 10
         self.frames_to_save = {}
-
+        self.path_to_routecsv = args.csv
         self.path_to_log = '/var/log/dronelab'
         self.props_fly = args.props_fly
         self.prop_to_save = {}
@@ -247,6 +248,8 @@ class PadDrone(object):
         #hard coded route:
         # TODO add functionality add react to intput in realtime
 
+
+        route = self.load_csv(self.path_to_routecsv)
         #TODO add serializable pad route: maybe like this:
         # csv := csv as String
         # route = PadRoute()
@@ -261,14 +264,15 @@ class PadDrone(object):
             #self.tello.go_xyz_speed_yaw_mid(0, 80, 100, 30, 0, 4, 1)
 
             speed = 30
-            #
-            self.tello.go_xyz_speed_yaw_mid(self, 0, 0, 100, speed, 0, 1, 1)
-            self.tello.go_xyz_speed_mid(0, 0, 30, speed, 1)
-            self.tello.go_xyz_speed_mid(280, 0, 30, speed, 1)
-            self.tello.go_xyz_speed_yaw_mid(280, 0, 100, speed, 180, 1, 2)
-            self.tello.go_xyz_speed_mid(0, 0, 30, speed, 2)
-            self.tello.go_xyz_speed_mid(-280, 0, 30, speed, 2)
-            self.tello.go_xyz_speed_yaw_mid(-280, 0, 100, speed, 180, 2, 1)
+            search_height = 20
+            pad_height = 100
+            self.tello.go_xyz_speed_yaw_mid(0, 0, pad_height, speed, 0, 1, 1)
+            self.tello.go_xyz_speed_mid(0, 0, search_height, speed, 1)
+            self.tello.go_xyz_speed_mid(280, 0, search_height, speed, 1)
+            self.tello.go_xyz_speed_yaw_mid(280, 0, pad_height, speed, 180, 1, 2)
+            self.tello.go_xyz_speed_mid(0, 0, search_height, speed, 2)
+            self.tello.go_xyz_speed_mid(-280, 0, search_height, speed, 2)
+            self.tello.go_xyz_speed_yaw_mid(-280, 0, pad_height, speed, 0, 2, 1)
         except:
             self.logger.info("Run failed somehow")
         #finished
@@ -310,3 +314,6 @@ class PadDrone(object):
         if self.send_rc_control:
             self.tello.send_rc_control(self.left_right_velocity, self.for_back_velocity, self.up_down_velocity,
                                        self.yaw_velocity)
+
+    def load_csv(self, path_to_routecsv:str) -> PadRoute:
+        return PadRoute() #TODO
