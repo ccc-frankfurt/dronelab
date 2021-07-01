@@ -262,7 +262,7 @@ class PadDrone(object):
 
             speed = 30
             #
-            self.tello.go_xyz_speed_mid(0, 0, 120, speed, 1)
+            self.tello.go_xyz_speed_yaw_mid(self, 0, 0, 100, speed, 0, 1, 1)
             self.tello.go_xyz_speed_mid(0, 0, 30, speed, 1)
             self.tello.go_xyz_speed_mid(280, 0, 30, speed, 1)
             self.tello.go_xyz_speed_yaw_mid(280, 0, 100, speed, 180, 1, 2)
