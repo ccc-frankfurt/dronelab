@@ -228,7 +228,7 @@ class PadDrone(object):
             if self.save_meta:
                 # self.tello.get_states()
                 self.df_meta_run.append({'elapsed_time': elapsed_time,
-                                         'frame': i_frame,
+                                         'frame': counter,
                                          'battery': self.tello.battery,
                                          'temperature': self.tello.temperature_highest,
                                          'flight_time': self.tello.flight_time,
@@ -238,7 +238,7 @@ class PadDrone(object):
                                          'yaw': self.tello.yaw,
                                          'get_distance_tof': self.tello.distance_tof,
                                          'get_barometer': self.tello.barometer})
-            self.logger.info("elapsed_time since first frame " + str(elapsed_time) + " " + str(i_frame))
+            self.logger.info("elapsed_time since first frame " + str(elapsed_time) + " " + str(counter))
 
         # logging in subthread
         t = DoAgain(snapshots_interval=1.0/self.FPS, func=log_information)
