@@ -223,7 +223,7 @@ class PadDrone(object):
                 filename = f"fps_{self.FPS}_frame_{counter:03}.jpg"
 
                 if np.sum(frame_cv_save) != 0:
-                    self.frames_to_save[filename] = frame_cv_save
+                    self.frames_to_save[filename] = frame_read.frame#frame_cv_save
 
             if self.save_meta:
                 # self.tello.get_states()
