@@ -246,6 +246,13 @@ class PadDrone(object):
 
         #hard coded route:
         # TODO add functionality add react to intput in realtime
+
+        #TODO add serializable pad route: maybe like this:
+        # csv := csv as String
+        # route = PadRoute()
+        # route.fromcsv(csv)
+        # route.run(tello)
+        # example command:"go_xyz_speed_yaw_mid,200,0,100,30,-90,1,2"
         try:
             # go_xyz_speed_yaw_mid(self, x, y, z, speed, yaw, mid1, mid2):
             #self.tello.go_xyz_speed_yaw_mid(200, 0, 100, 30, -90, 1, 2) ## sample run
@@ -253,8 +260,8 @@ class PadDrone(object):
             #self.tello.go_xyz_speed_yaw_mid(-200, 0, 100, 30, 90, 3, 4)
             #self.tello.go_xyz_speed_yaw_mid(0, 80, 100, 30, 0, 4, 1)
 
-            speed = 10
-            #getattr(self.tello, 'go_xyz_speed_mid')(200, 0, 30, speed, 1)
+            speed = 30
+            #
             self.tello.go_xyz_speed_mid(0, 0, 120, speed, 1)
             self.tello.go_xyz_speed_mid(0, 0, 30, speed, 1)
             self.tello.go_xyz_speed_mid(280, 0, 30, speed, 1)
