@@ -248,10 +248,17 @@ class PadDrone(object):
         #hard coded route:
         # TODO add functionality add react to intput in realtime
         try:
-            self.tello.go_xyz_speed_yaw_mid(200, 0, 100, 30, -90, 1, 2) ## sample run
-            self.tello.go_xyz_speed_yaw_mid(0, -80, 100, 30, -180, 2, 3)
-            self.tello.go_xyz_speed_yaw_mid(-200, 0, 100, 30, 90, 3, 4)
-            self.tello.go_xyz_speed_yaw_mid(0, 80, 100, 30, 0, 4, 1)
+            # go_xyz_speed_yaw_mid(self, x, y, z, speed, yaw, mid1, mid2):
+            #self.tello.go_xyz_speed_yaw_mid(200, 0, 100, 30, -90, 1, 2) ## sample run
+            #self.tello.go_xyz_speed_yaw_mid(0, -80, 100, 30, -180, 2, 3)
+            #self.tello.go_xyz_speed_yaw_mid(-200, 0, 100, 30, 90, 3, 4)
+            #self.tello.go_xyz_speed_yaw_mid(0, 80, 100, 30, 0, 4, 1)
+
+            speed = 30
+            self.tello.go_xyz_speed_mid(0, 0, 30, speed, 1)
+            self.tello.go_xyz_speed_mid(200, 0, 30, speed, 1)
+            #self.tello.go_xyz_speed_mid(200, 0, 100, speed, 1)
+            self.tello.go_xyz_speed_yaw_mid(200, 0, 100, speed, 180, 1, 2)  ## sample run
         except:
             self.logger.info("Run failed somehow")
         #finished
