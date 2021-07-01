@@ -201,6 +201,7 @@ class PadDrone(object):
 
         def log_information():
             elapsed_time = time.time() - start_time
+
             if frame_read.stopped:
                 frame_read.stop()
                 return

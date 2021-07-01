@@ -23,7 +23,10 @@ class DoAgain(Thread):
         while not self._finished.is_set():
             if (time.time() - last_call) > self.snapshots_interval:
                 last_call = time.time()
-                self.func()
+                try:
+                    self.func()
+                except:
+                    print("Do Again Func failed")
 
 
 def main():
