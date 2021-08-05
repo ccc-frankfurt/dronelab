@@ -40,7 +40,7 @@ class PadDrone(object):
         self.path_to_log = '/var/log/dronelab'
         self.props_fly = args.props_fly
         self.prop_to_save = {}
-        self.FPS = 1# TODO set to 1 while testing
+        self.FPS = 5# TODO set to 1 while testing
 
         # internal
         self.send_rc_control = False
